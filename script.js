@@ -309,7 +309,7 @@ function sendResponse(response) {
             // Mark email as sent in localStorage
             localStorage.setItem(STORAGE_KEYS.EMAIL_SENT, 'true');
             
-            showMessage('Дякуємо! Ваша відповідь прийнята. Чекаємо вас 30 січня з чимось смачненьким. Час узгодино враховуючи ваших міні босів :)', 'success');
+            showMessage('Дякуємо! Ваша відповідь прийнята. Чекаємо вас 31 січня з чимось смачненьким. Час узгодино враховуючи ваших міні босів :)', 'success');
             if (form) {
                 form.classList.add('hidden');
             }
