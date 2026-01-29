@@ -1,0 +1,27 @@
+[
+  {
+    "lastName": "Пукас",
+    "firstName": "Катя",
+    "photo": "imgs/pukas_katya.png"
+  },
+  {
+    "lastName": "Пукас",
+    "firstName": "Славік",
+    "photo": "imgs/pukas_slavik.png"
+  },
+  {
+    "lastName": "Комаровський",
+    "firstName": "Влад",
+    "photo": "imgs/vlad.png"
+  },
+  {
+    "lastName": "Комаровський",
+    "firstName": "Валентин",
+    "photo": "imgs/valentin.png"
+  },
+  {
+    "lastName": "Комаровська",
+    "firstName": "Мар'яна",
+    "photo": "imgs/marjana.png"
+  }
+]

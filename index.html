@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,36 +8,92 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <div class="invitation-card">
-        <h1 class="invitation-header">Вас запрошують!</h1>
-        
-        <div class="photo-placeholder">
-            <img src="imgs/serafims.jpg" alt="">
-        </div>
-        
+    <!-- Search Screen -->
+    <div id="search-screen" class="invitation-card">
+        <h1 class="invitation-header">Вітаємо!</h1>
+
         <p class="invitation-text">
-            Ми будемо раді, якщо ви приєднаєтеся до нас на вечір <strong>піци і мальви</strong>. 
+            Будь ласка, введіть ваше прізвище, щоб переглянути запрошення
+        </p>
+
+        <form id="search-form">
+            <div class="search-group">
+                <input type="text" id="lastName-input" class="search-input" placeholder="Введіть ваше прізвище" required
+                    autocomplete="off">
+                <button type="submit" class="btn-custom btn-search">
+                    Знайти
+                </button>
+            </div>
+            <div id="search-error" class="search-error hidden"></div>
+        </form>
+    </div>
+
+    <!-- Selection Screen (for multiple matches) -->
+    <div id="selection-screen" class="invitation-card hidden">
+        <h1 class="invitation-header">Виберіть себе</h1>
+
+        <p class="invitation-text">
+            Знайдено кілька осіб з таким прізвищем. Будь ласка, виберіть себе:
+        </p>
+
+        <div id="selection-list" class="selection-list"></div>
+
+        <div class="not-me-container">
+            <a href="#" id="back-to-search-link" class="not-me-link">повернутися до пошуку</a>
+        </div>
+    </div>
+
+    <!-- Invitation Screen -->
+    <div id="invitation-screen" class="invitation-card hidden">
+        <h1 class="invitation-header">Вас запрошують!</h1>
+
+        <div class="photo-placeholder">
+            <img id="guest-photo" src="" alt="">
+        </div>
+
+        <p class="guest-name" id="guest-name"></p>
+
+        <p class="invitation-text">
+            Ми будемо раді, якщо ви в повному складі приєднаєтеся до нас на вечір <strong>піци, вина і єгєря</strong>.
             <br>
             Будь ласка, повідомте нам, чи зможете ви прийти!
         </p>
-        
+
         <div id="message-container"></div>
-        
+
         <form id="invitation-form">
             <div class="button-group">
                 <button type="submit" class="btn-custom btn-accept" data-response="accepted">
                     Прийняти
                 </button>
-                <button title="Навіть не думай" type="button" disabled class="btn-custom btn-reject" data-response="rejected">
+                <button type="button" class="btn-custom btn-reject" data-response="rejected">
                     Відхилити
                 </button>
             </div>
+            <div class="not-me-container">
+                <a href="#" id="not-me-link" class="not-me-link">Це не я, повернутись до пошуку</a>
+            </div>
         </form>
     </div>
-    
+
+    <!-- Rejection Screen (Joke) -->
+    <div id="rejection-screen" class="invitation-card hidden">
+        <h1 class="invitation-header">🤔</h1>
+
+        <p class="rejection-text">
+            Добре подумай і спробуй знову
+        </p>
+
+        <button type="button" class="btn-custom btn-retry" onclick="location.reload()">
+            Спробувати знову
+        </button>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
