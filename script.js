@@ -14,24 +14,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check if email was already sent
     const emailSent = localStorage.getItem(STORAGE_KEYS.EMAIL_SENT);
-    if (emailSent === 'true') {
-        // Restore guest and show thank you message
-        restoreGuestFromStorage();
-        if (currentGuest) {
-            showInvitation(currentGuest);
-            showMessage('Дякуємо! Ваша позитивна відповідь вже була прийнята.', 'success');
-            const form = document.getElementById('invitation-form');
-            if (form) {
-                form.classList.add('hidden');
-            }
-            // Hide the "not me" link since email was already sent
-            const notMeLink = document.getElementById('not-me-link');
-            if (notMeLink) {
-                notMeLink.parentElement.classList.add('hidden');
-            }
-        }
-        return;
-    }
+    // if (emailSent === 'true') {
+    //     // Restore guest and show thank you message
+    //     restoreGuestFromStorage();
+    //     if (currentGuest) {
+    //         showInvitation(currentGuest);
+    //         showMessage('Дякуємо! Ваша позитивна відповідь вже була прийнята.', 'success');
+    //         const form = document.getElementById('invitation-form');
+    //         if (form) {
+    //             form.classList.add('hidden');
+    //         }
+    //         // Hide the "not me" link since email was already sent
+    //         const notMeLink = document.getElementById('not-me-link');
+    //         if (notMeLink) {
+    //             notMeLink.parentElement.classList.add('hidden');
+    //         }
+    //     }
+    //     return;
+    // }
     
     // Try to restore guest from localStorage
     restoreGuestFromStorage();
@@ -279,7 +279,11 @@ function sendResponse(response) {
     const messageContainer = document.getElementById('message-container');
     
     // Check if email was already sent
-    const emailSent = localStorage.getItem(STORAGE_KEYS.EMAIL_SENT);
+    // const emailSent = localStorage.getItem(STORAGE_KEYS.EMAIL_SENT);
+    // if (emailSent === 'true') {
+    //     showMessage('Ваша відповідь вже була надіслана раніше.', 'error');
+    //     return;
+    // }
     
     // Handle rejection with joke screen
     if (response === 'rejected') {
@@ -305,7 +309,7 @@ function sendResponse(response) {
             // Mark email as sent in localStorage
             localStorage.setItem(STORAGE_KEYS.EMAIL_SENT, 'true');
             
-            showMessage('Дякую! Ваша відповідь прийнята. Чекаю в 7 лютого о 17:00 в HISTORIA :)', 'success');
+            showMessage('Дякую! Ваша відповідь прийнята. Чекаю 7 лютого о 17:00 в HISTORIA :)', 'success');
             if (form) {
                 form.classList.add('hidden');
             }
