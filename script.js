@@ -10,7 +10,7 @@ const STORAGE_KEYS = {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize EmailJS with your public key
-    // emailjs.init('YN-_wdGq5xFs99cQ-');
+    emailjs.init('YN-_wdGq5xFs99cQ-');
     
     // Check if email was already sent
     const emailSent = localStorage.getItem(STORAGE_KEYS.EMAIL_SENT);
@@ -302,7 +302,7 @@ function sendResponse(response) {
         ip: 'N/A (GitHub Pages)' // IP not available on static sites
     };
 
-    // emailjs.send('service_3z5j3uy', 'template_tut1o6f', templateParams)
+    emailjs.send('service_3z5j3uy', 'template_tut1o6f', templateParams)
     const promise = new Promise((resolve, reject) => {
         setTimeout(resolve, 1000)
     })
