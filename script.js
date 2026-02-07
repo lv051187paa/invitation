@@ -10,28 +10,28 @@ const STORAGE_KEYS = {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize EmailJS with your public key
-    emailjs.init('YN-_wdGq5xFs99cQ-');
+    // emailjs.init('YN-_wdGq5xFs99cQ-');
     
     // Check if email was already sent
     const emailSent = localStorage.getItem(STORAGE_KEYS.EMAIL_SENT);
-    // if (emailSent === 'true') {
-    //     // Restore guest and show thank you message
-    //     restoreGuestFromStorage();
-    //     if (currentGuest) {
-    //         showInvitation(currentGuest);
-    //         showMessage('Дякуємо! Ваша позитивна відповідь вже була прийнята.', 'success');
-    //         const form = document.getElementById('invitation-form');
-    //         if (form) {
-    //             form.classList.add('hidden');
-    //         }
-    //         // Hide the "not me" link since email was already sent
-    //         const notMeLink = document.getElementById('not-me-link');
-    //         if (notMeLink) {
-    //             notMeLink.parentElement.classList.add('hidden');
-    //         }
-    //     }
-    //     return;
-    // }
+    if (emailSent === 'true') {
+        // Restore guest and show thank you message
+        restoreGuestFromStorage();
+        if (currentGuest) {
+            showInvitation(currentGuest);
+            showMessage('Дякуємо! Ваша позитивна відповідь вже була прийнята.', 'success');
+            const form = document.getElementById('invitation-form');
+            if (form) {
+                form.classList.add('hidden');
+            }
+            // Hide the "not me" link since email was already sent
+            const notMeLink = document.getElementById('not-me-link');
+            if (notMeLink) {
+                notMeLink.parentElement.classList.add('hidden');
+            }
+        }
+        return;
+    }
     
     // Try to restore guest from localStorage
     restoreGuestFromStorage();
@@ -100,7 +100,6 @@ async function loadInvitees() {
         }
         invitees = await response.json();
         inviteesLoaded = true;
-        console.log('Loaded invitees:', invitees);
     } catch (error) {
         console.error('Error loading invitees:', error);
         inviteesLoaded = false;
@@ -261,9 +260,10 @@ function showInvitation(guest) {
     
     if (guestPhoto) {
         guestPhoto.src = guest.photo;
-    }
+    }console.log(guest);
+    
     if (guestName) {
-        guestName.textContent = `${guest.firstName} ${guest.lastName}`;
+        guestName.textContent = guest.nickname || `${guest.firstName} ${guest.lastName}`;
     }
     
     // Show invitation screen
@@ -279,11 +279,11 @@ function sendResponse(response) {
     const messageContainer = document.getElementById('message-container');
     
     // Check if email was already sent
-    // const emailSent = localStorage.getItem(STORAGE_KEYS.EMAIL_SENT);
-    // if (emailSent === 'true') {
-    //     showMessage('Ваша відповідь вже була надіслана раніше.', 'error');
-    //     return;
-    // }
+    const emailSent = localStorage.getItem(STORAGE_KEYS.EMAIL_SENT);
+    if (emailSent === 'true') {
+        showMessage('Ваша відповідь вже була надіслана раніше.', 'error');
+        return;
+    }
     
     // Handle rejection with joke screen
     if (response === 'rejected') {
@@ -302,14 +302,17 @@ function sendResponse(response) {
         ip: 'N/A (GitHub Pages)' // IP not available on static sites
     };
 
-    emailjs.send('service_3z5j3uy', 'template_tut1o6f', templateParams)
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
+    // emailjs.send('service_3z5j3uy', 'template_tut1o6f', templateParams)
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(resolve, 1000)
+    })
+        promise.then(function(response) {
+            // console.log('SUCCESS!', response.status, response.text);
             
             // Mark email as sent in localStorage
             localStorage.setItem(STORAGE_KEYS.EMAIL_SENT, 'true');
             
-            showMessage('Дякую! Ваша відповідь прийнята. Чекаю 7 лютого о 17:00 в HISTORIA :)', 'success');
+            showMessage('Дякую! Ваша відповідь прийнята. Чекаю 8 лютого о 14:00 в резиденції Павлюків :)', 'success');
             if (form) {
                 form.classList.add('hidden');
             }

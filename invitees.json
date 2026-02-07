@@ -1,12 +1,38 @@
 [
   {
-    "lastName": "Шейка",
-    "firstName": "Наталя",
-    "photo": "imgs/natasha.png"
+    "lastName": "Павлюк",
+    "firstName": "Антоніна",
+    "photo": "imgs/mama.png",
+    "nickname": "Мама"
   },
   {
-    "lastName": "Серафім",
-    "firstName": "Катерина",
-    "photo": "imgs/katya.png"
+    "lastName": "Карпенко",
+    "firstName": "Альбіна",
+    "photo": "imgs/albina.png",
+    "nickname": "Альбіна"
+  },
+  {
+    "lastName": "Голованова",
+    "firstName": "Валентина",
+    "photo": "imgs/batku.png",
+    "nickname": "Мама і тато"
+  },
+  {
+    "lastName": "Голованов",
+    "firstName": "В'ячеслав",
+    "photo": "imgs/batku.png",
+    "nickname": "Мама і тато"
+  },
+  {
+    "lastName": "Голованов",
+    "firstName": "Олексій",
+    "photo": "imgs/golovanovu.png",
+    "nickname": "Малі"
+  },
+  {
+    "lastName": "Голованова",
+    "firstName": "Олена",
+    "photo": "imgs/golovanovu.png",
+    "nickname": "Малі"
   }
 ]
